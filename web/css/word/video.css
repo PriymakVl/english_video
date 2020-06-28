@@ -1,0 +1,9 @@
+.view {
+  margin: 50px auto;
+  font-size: 40px;
+  text-align: center;
+  background: #d3d3d3;
+  display: none;
+  padding: 50px;
+}
+
