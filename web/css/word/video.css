@@ -1,9 +1,28 @@
-.view {
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url('/img/white-cubes.png')
+}
+
+.card-wrp {
+	text-align: center;
+}
+
+.card {
   margin: 50px auto;
   font-size: 40px;
   text-align: center;
-  background: #d3d3d3;
-  display: none;
+  background: #FFD700;
+  display: inline-block;
+  /*display: none;*/
   padding: 50px;
+}
+
+.statistics_sounds {
+	top: 10px !important;
 }
 

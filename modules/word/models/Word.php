@@ -26,14 +26,6 @@ class Word extends \app\modules\word\models\BaseWord
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
-        return 'words';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -68,7 +60,7 @@ class Word extends \app\modules\word\models\BaseWord
 
     public static function getByName($en)
     {
-        $engl = self::prepare($en);
+        $en = self::prepare($en);
         return self::findOne(['engl' => $en]);
     }
 }

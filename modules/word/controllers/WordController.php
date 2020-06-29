@@ -6,6 +6,8 @@ use Yii;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 use app\modules\word\models\{Word, SearchWord, WordFileForm};
+use app\modules\text\models\Text;
+use app\models\Sound;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
@@ -134,7 +136,7 @@ class WordController extends \app\controllers\BaseController
         $model->file_ru = UploadedFile::getInstance($model, 'file_ru');
         $model->file_en = UploadedFile::getInstance($model, 'file_en');
 
-        if ($model->add()) $this->successMessage('Слова успешно добавлены');
+        if ($model->add()) $this->successMessage('Успешно добавлены ' . $model->countAdd . ' слова');
         else $this->errorMessage('Ошибка при добавлении слов');
 
         return $this->redirect(Url::previous());
@@ -142,9 +144,10 @@ class WordController extends \app\controllers\BaseController
 
     public function actionVideo($id) 
     {
+        $this->layout = '@app/views/layouts/video.php';
         $text = Text::findOne($id);
-        $sounds_str = Sound::makeStringForPlayer($words);
-        return $this->render('video', compact('sounds_str'));
+        $sounds_str = $text->words ? Sound::makeStringForPlayer($text->words) : '';
+        return $this->render('video', compact('sounds_str', 'text'));
     }
 
     /**

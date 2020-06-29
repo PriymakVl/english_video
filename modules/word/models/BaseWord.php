@@ -10,6 +10,11 @@ use app\modules\string\models\{FullString, Substring};
 class BaseWord extends \app\models\ModelApp
 {
 
+    public static function tableName()
+    {
+        return 'words';
+    }
+
     public  static function add($en, $ru) 
     {
         $word = new self;
