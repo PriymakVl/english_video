@@ -41,5 +41,7 @@ tests/_support/_generated
 
 /web/temp/*
 
+/web/img/*
+
 #setup ftp sublime editor
 sftp-config.json
