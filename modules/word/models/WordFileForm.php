@@ -9,6 +9,7 @@ class WordFileForm extends \yii\base\Model
 {
     public $file_ru;
     public $file_en;
+    public $countAdd = 0;
 
     public function rules()
     {
@@ -44,7 +45,10 @@ class WordFileForm extends \yii\base\Model
     {
         for ($i = 0, $count = count($words['en']); $i < $count; $i++) {
             $word = Word::getByName($words['en'][$i]);
-            if ($word === false) Word::add($words['en'][$i], $words['ru'][$i]);
+            if (!$word) {
+                Word::add($words['en'][$i], $words['ru'][$i]);
+                $this->countAdd++;
+            }
         }
     }
 
